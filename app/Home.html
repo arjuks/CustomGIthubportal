@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html ng-app="AngModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Egen Angular App</title>
+    <link rel="stylesheet" type="text/css" href="app.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="angular.min.js"></script>
+    <script src="Controller.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-route.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+</head>
+
+<body ng-controller="SimpleController">
+<h1>Github Profile Page</h1>
+<a href="{{home}}" class="btn btn-primary" target="_blank" id="profBtn">Go to Github Home Page</a>
+<div class="container">
+    <div class="profile">
+        <h2>Profile Details</h2>
+         <p>
+             <span class="repo_title">Name :</span>{{infor.name}} <br>
+             <span class="repo_title">Email :</span>{{infor.email}}<br>
+             <span class="repo_title">Location :</span>{{infor.location}}<br>
+             <span class="repo_title">Occupation :</span>{{infor.company}}<br>
+             <span class="repo_title">No of followers :</span>{{infor.followers}}<br>
+             <span class="repo_title">No of following :</span>{{infor.following}}<br>
+             <span class="repo_title">Public repositories :</span>{{infor.public_repos}}<br>
+             <span class="repo_title">Public gists :</span>{{infor.public_gists}}<br>
+             <span class="repo_title">Login Username :</span>{{infor.login}}<br>
+             <span class="repo_title">Is he hireable?? :</span>{{infor.hireable}}<br>
+        </p>
+    </div>
+
+    <div class="buttons">
+        <div class="section1">
+            <h2>
+                Repository Details
+            </h2>
+            <a href="Repo.html" target="_blank" class="btn btn-primary">To view repositories</a><br>
+        </div>
+
+        <div class="section2">
+            <h2>
+                Gists Details
+            </h2>
+            <a href="Gist.html" target="_blank" class="btn btn-primary">To view gists</a><br>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

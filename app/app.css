@@ -1,0 +1,79 @@
+/* app css stylesheet */
+
+.menu {
+  list-style: none;
+  border-bottom: 0.1em solid black;
+  margin-bottom: 2em;
+  padding: 0 0 0.5em;
+}
+
+.menu:before {
+  content: "[";
+}
+
+.menu:after {
+  content: "]";
+}
+
+.menu > li {
+  display: inline;
+}
+
+.menu > li:before {
+  content: "|";
+  padding-right: 0.3em;
+}
+
+.menu > li:nth-child(1):before {
+  content: "";
+  padding: 0;
+}
+.total{
+  background-color: chartreuse;
+  padding: 5px;
+}
+
+#profBtn{
+  margin-left: 44%;
+}
+
+h1{
+  text-align: center;
+}
+.repo_title{
+  font-size: larger;
+  font-weight: bold;
+}
+.profile{
+  margin-left: 43%;
+}
+
+.buttons{
+  width:100%;
+}
+.section1{
+
+  margin-left: 9%;
+  width:42%;
+  float:left;
+}
+.section2{
+
+  width: 24%;
+  float:right;
+}
+.container2 {
+  visibility: hidden;
+}
+.showclass{
+  visibility: visible;
+}
+#add-info{
+  margin-left: 12%;
+}
+.container2{
+  margin-left: 12%;
+}
+.widths{
+  width:30% !important;
+}

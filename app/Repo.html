@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html ng-app="AngModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Egen Angular App</title>
+    <link rel="stylesheet" type="text/css" href="app.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="angular.min.js"></script>
+    <script src="Controller.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-route.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();
+
+            $("#add-info").click(function(){
+                $(".container2").addClass("showclass");
+            });
+        });
+
+    </script>
+</head>
+
+<body ng-controller="SimpleController">
+<h1>Github Profile Page</h1>
+<a href="{{home}}" class="btn btn-primary" target="_blank" id="profBtn">Go to Github Home Page</a>
+
+
+<div class="container">
+
+    <h2>
+        Repository Details
+    </h2>
+
+    Total no of repositories: <span class="total">{{total}}</span><br><br>
+
+    <span class="repo_title">Search :</span><input type="text" placeholder="Find your repository" ng-model="repo"><br><br>
+    <p ng-repeat="r in repos | filter:repo | orderBy:'r.name'">
+        <span class="repo_title" >Title :</span><a href="{{r.html_url}}" class="repo_title" target="_blank" data-toggle="tooltip" title="Click here to go to github repository">{{r.name}}</a><br>
+        <span class="repo_title">Description:</span> {{r.description}} <br>
+        <span class="repo_title">Created at:</span> {{r.created_at}}&nbsp; &nbsp;
+        <span class="repo_title">Updated at:</span> {{r.updated_at}}&nbsp; &nbsp;
+        <span class="repo_title">Pushed at:</span> {{r.pushed_at}}<br>
+        <span class="repo_title">Size :</span> {{r.size}}<br>
+        <span class="repo_title">Language Used :</span> {{r.language}}<br>
+        <span class="repo_title">Default Branch:</span> {{r.default_branch}}<br>
+        <span class="repo_title">Contributors :</span>
+        <button type="submit" ng-click="contrib(r.contributors_url)" class="btn btn-info">Show contributors</button><br>
+        <span class="repo_title">Is it private?? :</span> {{r.private}}<br>
+        <button type="submit" ng-click="remove(r)" class="btn btn-danger">Remove</button><br>
+
+        ************************************************************************************************************************************************************************************************
+    </p>
+</div>
+
+<h2 style="margin-left: 12%"> To add repository information</h2>
+<button type="submit" class="btn btn-default" id="add-info">Add Info</button><br><br>
+
+<div class="container2">
+    <form role="form">
+
+        <div class="form-group">
+            Title : <input type="text" class="form-control widths"  ng-model="addtitle" required/>
+        </div>
+        <div class="form-group">
+            Description : <textarea class="form-control widths" ng-model="addDesc" required></textarea>
+        </div>
+        <div class="form-group">
+        Created at :<input type="date" class="form-control widths" ng-model="addDate" required>
+        </div>
+        <div class="form-group">
+        Updated at :<input type="date" class="form-control widths" ng-model="upDate" required>
+        </div>
+        <div class="form-group">
+        Pushed at :<input type="date" class="form-control widths" ng-model="pushDate" required>
+        </div>
+        <div class="form-group">
+        Size :<input type="number" class="form-control widths" ng-model="size" required>
+        </div>
+        <div class="form-group">
+        Language Used :<input type="text" class="form-control widths" ng-model="lang" required>
+        </div>
+        <div class="form-group">
+        Default Branch :<input type="text" class="form-control widths" ng-model="branch" required>
+        </div>
+        <div class="form-group">
+        Is this private :<input type="text" class="form-control widths" ng-model="private" required>
+        </div>
+        <button type="submit" ng-click="addcust()" class="btn btn-success">Submit</button>
+        <button type="submit" ng-click="cancelrepo()" class="btn btn-primary">Cancel</button><br><br>
+    </form>
+    <br>
+</div>
+</body>
+</html>

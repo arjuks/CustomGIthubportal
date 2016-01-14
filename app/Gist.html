@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html ng-app="AngModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Egen Angular App</title>
+    <link rel="stylesheet" type="text/css" href="app.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="angular.min.js"></script>
+    <script src="Controller.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-route.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();
+
+            $("#add-info").click(function(){
+                $(".container2").addClass("showclass");
+            });
+        });
+    </script>
+</head>
+
+<body ng-controller="SimpleController">
+<h1>Github Profile Page</h1>
+<a href="{{home}}" class="btn btn-primary" target="_blank" id="profBtn">Go to Github Home Page</a>
+<div class="container">
+    <h2>
+        Gists Details
+    </h2>
+
+    Total no of gists: <span class="total">{{tgists}}</span><br><br>
+
+    <span class="repo_title">Search :</span><input type="text" placeholder="Find your gist" ng-model="gist"><br><br>
+
+    <p ng-repeat="g in gists | filter:gist | orderBy:'Id'">
+        <span class="repo_title">Id :</span>{{g.id}}<br>
+        <span class="repo_title" >Gist Url :</span><a href="{{g.html_url}}" class="repo_title" target="_blank" data-toggle="tooltip" title="Click here to go to github repository">Go to gist</a><br>
+        <span class="repo_title">Description :</span>{{g.description}}<br>
+        <span class="repo_title">Comments :</span>{{g.comments}}<br>
+        <span class="repo_title">Created at :</span>{{g.created_at}}<br>
+        <span class="repo_title">Updated at :</span>{{g.updated_at}}<br>
+        <button type="submit" ng-click="removegist(g)" class="btn btn-danger">Remove</button><br>
+
+        ***************************************************************************************************************************************************************************************************
+    </p>
+</div>
+
+<h2 style="margin-left: 12%"> To add gist information</h2>
+<button type="submit" class="btn btn-default" id="add-info">Add Info</button><br><br>
+
+<div class="container2">
+    <form role="form">
+
+        <div class="form-group">
+            Id : <input type="text" class="form-control widths"  ng-model="gistId" required/>
+        </div>
+        <div class="form-group">
+            Description : <textarea class="form-control widths" ng-model="gistDesc" required></textarea>
+        </div>
+        <div class="form-group">
+            Comments :<input type="number" class="form-control widths" ng-model="comment" required>
+        </div>
+        <div class="form-group">
+            Created at :<input type="date" class="form-control widths" ng-model="createDate" required>
+        </div>
+        <div class="form-group">
+            Updated at :<input type="date" class="form-control widths" ng-model="upgistDate" required>
+        </div>
+
+        <button type="submit" ng-click="addgist()" class="btn btn-success">Submit</button>
+        <button type="submit" ng-click="cancelgist()" class="btn btn-primary">Cancel</button><br><br>
+    </form>
+    <br>
+</div>
+
+</body>
+</html>
